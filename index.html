@@ -8,16 +8,18 @@
 <style>
 :root {
   --bg: #f4f6f9;
-  --card: #ffffff;
-  --text: #333;
+  --card: rgba(255,255,255,0.75);
+  --text: #1f2937;
   --primary: #4CAF50;
+  --accent: #22c55e;
 }
 
 body.dark {
-  --bg: #121212;
-  --card: #1e1e1e;
-  --text: #f1f1f1;
+  --bg: #0f172a;
+  --card: rgba(30,41,59,0.75);
+  --text: #e5e7eb;
   --primary: #81c784;
+  --accent: #4ade80;
 }
 
 * {
@@ -27,29 +29,36 @@ body.dark {
   font-family: 'Segoe UI', sans-serif;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
-  background: var(--bg);
+  background: radial-gradient(circle at top, #0000, var(--bg));
+  background-color: var(--bg);
   color: var(--text);
-  transition: all 0.4s ease;
+  transition: 0.4s;
 }
 
+/* HEADER */
 header {
-  background: linear-gradient(135deg, var(--primary), #2e7d32);
-  color: #fff;
-  padding: 70px 20px;
+  background: linear-gradient(135deg, var(--primary), #166534);
+  color: white;
+  padding: 80px 20px;
   text-align: center;
-  animation: slideDown 1s ease;
+  animation: fadeDown 1s ease;
 }
 
-header h1 {
-  font-size: 36px;
-}
+header h1 { font-size: 38px; }
 
+/* NAV */
 nav {
+  position: sticky;
+  top: 0;
   background: var(--card);
+  backdrop-filter: blur(14px);
   padding: 15px;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  z-index: 10;
 }
 
 nav a {
@@ -57,88 +66,118 @@ nav a {
   text-decoration: none;
   color: var(--text);
   font-weight: bold;
+  position: relative;
 }
 
-nav a:hover {
-  color: var(--primary);
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background: var(--accent);
+  left: 0;
+  bottom: -6px;
+  transition: 0.3s;
 }
 
+nav a:hover::after { width: 100%; }
+
+/* DARK MODE */
 .toggle-btn {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--primary);
-  color: #fff;
+  top: 18px;
+  right: 18px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 20px;
+  padding: 12px 18px;
+  border-radius: 30px;
   cursor: pointer;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
+/* SECTIONS */
 section {
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 60px auto;
   background: var(--card);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  animation: fadeIn 1s ease;
+  backdrop-filter: blur(18px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  animation: fadeUp 1s ease;
 }
 
+/* TITLES */
 h2 {
-  color: var(--primary);
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--primary);
-  display: inline-block;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-ul {
-  list-style: none;
+/* SKILLS */
+.skill { margin-bottom: 20px; }
+
+.bar {
+  width: 100%;
+  height: 12px;
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 6px;
 }
 
-ul li {
-  margin-bottom: 10px;
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  width: 0;
+  animation: loadSkill 2s forwards;
 }
 
+/* PROJECTS */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 
 .project-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  transition: transform 0.4s, box-shadow 0.4s;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 25px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s, box-shadow 0.5s;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  border-color: var(--primary);
+  transform: rotateX(8deg) rotateY(-8deg) translateY(-15px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
 }
 
+/* FOOTER */
 footer {
-  background: #222;
-  color: #fff;
+  background: #020617;
+  color: #cbd5f5;
   text-align: center;
-  padding: 20px;
-  margin-top: 40px;
+  padding: 25px;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideDown {
-  from {transform: translateY(-50px); opacity: 0;}
-  to {transform: translateY(0); opacity: 1;}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@media(max-width:600px) {
-  header h1 { font-size: 28px; }
+@keyframes loadSkill {
+  to { width: var(--level); }
 }
 </style>
 </head>
@@ -170,13 +209,32 @@ user-friendly applications and continuously learning new technologies.
 
 <section id="skills">
 <h2>Skills</h2>
-<ul>
-<li><b>Programming:</b> C, C++, Python, Java</li>
-<li><b>Web:</b> HTML, CSS, JavaScript, PHP, Laravel</li>
-<li><b>Database:</b> MySQL</li>
-<li><b>Tools:</b> VS Code, Git, XAMPP</li>
-<li><b>Concepts:</b> OOP, Data Structures</li>
-</ul>
+
+<div class="skill">
+<b>C / C++</b>
+<div class="bar"><div class="bar-fill" style="--level:85%"></div></div>
+</div>
+
+<div class="skill">
+<b>Python / Java</b>
+<div class="bar"><div class="bar-fill" style="--level:75%"></div></div>
+</div>
+
+<div class="skill">
+<b>HTML / CSS / JavaScript</b>
+<div class="bar"><div class="bar-fill" style="--level:90%"></div></div>
+</div>
+
+<div class="skill">
+<b>PHP / Laravel</b>
+<div class="bar"><div class="bar-fill" style="--level:80%"></div></div>
+</div>
+
+<div class="skill">
+<b>MySQL</b>
+<div class="bar"><div class="bar-fill" style="--level:75%"></div></div>
+</div>
+
 </section>
 
 <section id="projects">
@@ -226,7 +284,7 @@ user-friendly applications and continuously learning new technologies.
 <h2>Contact Me</h2>
 <p>📧 bhimaniheet2022@gmail.com</p>
 <p>📞 9904387948</p>
-<p>🌐 <a href="https://github.com/hitbhimani/" target="_blank">GitHub</a></p>
+<p>🌐 <a href="https://github.com/hitbhimani" target="_blank">GitHub</a></p>
 </section>
 
 <footer>
@@ -241,4 +299,3 @@ function toggleMode() {
 
 </body>
 </html>
-
