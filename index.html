@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hit Bhimani | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #333;
+  --primary: #4CAF50;
+}
+
+body.dark {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #f1f1f1;
+  --primary: #81c784;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.4s ease;
+}
+
+header {
+  background: linear-gradient(135deg, var(--primary), #2e7d32);
+  color: #fff;
+  padding: 70px 20px;
+  text-align: center;
+  animation: slideDown 1s ease;
+}
+
+header h1 {
+  font-size: 36px;
+}
+
+nav {
+  background: var(--card);
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+section {
+  max-width: 1100px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease;
+}
+
+h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  border-color: var(--primary);
+}
+
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+@media(max-width:600px) {
+  header h1 { font-size: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
+
+<header>
+<h1>Hit Prakash Bhai Bhimani</h1>
+<p>BCA Student | Web Developer | Software Enthusiast</p>
+</header>
+
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+<h2>About Me</h2>
+<p>
+I’m a BCA student at Marwadi University passionate about web development,
+programming, and building practical projects. I enjoy creating efficient,
+user-friendly applications and continuously learning new technologies.
+</p>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<ul>
+<li><b>Programming:</b> C, C++, Python, Java</li>
+<li><b>Web:</b> HTML, CSS, JavaScript, PHP, Laravel</li>
+<li><b>Database:</b> MySQL</li>
+<li><b>Tools:</b> VS Code, Git, XAMPP</li>
+<li><b>Concepts:</b> OOP, Data Structures</li>
+</ul>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="projects">
+
+<div class="project-card">
+<h3>Personal Budget Tracker</h3>
+<p>Tracks income, expenses & budgets.</p>
+<p><b>Tech:</b> PHP, MySQL</p>
+</div>
+
+<div class="project-card">
+<h3>Theme-Based Blog Website</h3>
+<p>Custom themes & content management.</p>
+<p><b>Tech:</b> Laravel, PHP</p>
+</div>
+
+<div class="project-card">
+<h3>Airline Booking System</h3>
+<p>Flight schedules & ticket booking.</p>
+<p><b>Tech:</b> Python</p>
+</div>
+
+<div class="project-card">
+<h3>Student Management System</h3>
+<p>CRUD student records.</p>
+<p><b>Tech:</b> PHP, MySQL</p>
+</div>
+
+<div class="project-card">
+<h3>Library Book Reservation</h3>
+<p>Book issue & reservation system.</p>
+<p><b>Tech:</b> C#</p>
+</div>
+
+<div class="project-card">
+<h3>Mood-Based Music Playlist</h3>
+<p>Generates playlists by mood.</p>
+<p><b>Tech:</b> PHP, MySQL</p>
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+<p>📧 bhimaniheet2022@gmail.com</p>
+<p>📞 9904387948</p>
+<p>🌐 <a href="https://github.com/hitbhimani/theme_blog" target="_blank">GitHub</a></p>
+</section>
+
+<footer>
+© 2026 Hit Prakash Bhai Bhimani | Professional Portfolio
+</footer>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
